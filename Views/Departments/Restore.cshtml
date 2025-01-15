@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Department>
+@{
+	ViewData["Title"] = "Restore";
+}
+
+<h1>Restore Departments</h1>
+
+<ul>
+	@foreach (var item in Model)
+	{
+		<li>
+			<a asp-action="ConfirmRestore" asp-controller="Departments" asp-route-id="@item.DepartmentId">@item.Name</a>
+		</li>
+	}
+</ul>

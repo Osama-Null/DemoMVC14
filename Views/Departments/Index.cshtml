@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Department>
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Departments</h1>
+
+<div class="text-end">
+	<a asp-action="Add" asp-controller="Departments" class="btn btn-success">+ Add Department</a>
+	@if (ViewBag.total > 0)
+	{
+		<a asp-action="Restore" asp-controller="Departments" class="btn btn-success">↻ Restore</a>
+	}
+	else
+	{
+		<a class="btn btn-secondary opacity-50">↻ Restore</a>
+	}
+</div>
+
+<table class="table table-responsive">
+	<tr>
+		<th>@Html.DisplayNameFor(model => model.Name)</th>
+	</tr>
+	@foreach (var dept in Model)
+	{
+		<tr>
+			<td>@dept.Name</td>
+			<td class="text-end">
+				<a asp-action="Details" asp-controller="Departments" asp-route-id="@dept.DepartmentId" class="btn btn-secondary">More</a>
+				<a asp-action="Edit" asp-controller="Departments" asp-route-id="@dept.DepartmentId" class="btn btn-primary">Edit</a>
+				<a asp-action="Delete" asp-controller="Departments" asp-route-id="@dept.DepartmentId" class="btn btn-danger">Delete</a>
+			</td>
+		</tr>
+	}
+</table>

@@ -1,0 +1,29 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<form asp-action="Add" asp-controller="Departments" method="post">
+	<table class="table table-responsive">
+		<tr>
+			<td><label asp-for="Name"></label></td>
+			<td>
+				<input asp-for="Name" placeholder="Enter department name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</td>
+		</tr>
+	</table>
+	<div class="text-end">
+		<a asp-action="Index" asp-controller="Departments" class="btn btn-secondary btn-lg">Cancel</a>
+		<td>
+			<input type="submit" value="Save" class="btn btn-primary btn-lg" />
+		</td>
+	</div>
+</form>
+
+@section Scripts{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

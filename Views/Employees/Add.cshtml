@@ -1,0 +1,51 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<form asp-action="AddEmp" asp-controller="Employees" method="post">
+	<table class="table table-responsive">
+		<tr>
+			<td><label asp-for="Name"></label></td>
+			<td>
+				<input asp-for="Name" placeholder="Enter employee name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</td>
+		</tr>
+		<tr>
+			<td><label asp-for="Email"></label></td>
+			<td><input asp-for="Email" placeholder="Enter employee email" class="form-control" /></td>
+		</tr>
+		@* <tr>
+			<td><label asp-for="ConfirmEmail"></label></td>
+			<td><input asp-for="ConfirmEmail" placeholder="Re-enter employee email" class="form-control" /></td>
+		</tr> *@
+		<tr>
+			<td><label asp-for="Gender"></label></td>
+			<td><input asp-for="Gender" placeholder="Enter employee gender" class="form-control" /></td>
+		</tr>
+		<tr>
+			<td><label asp-for="Salary"></label></td>
+			<td>
+				<input asp-for="Salary" placeholder="Enter employee salary" class="form-control" />
+				<span asp-validation-for="Salary" class="text-danger"></span>
+			</td>
+		</tr>
+		<tr>
+			<td><label asp-for="Department!.Name"></label></td>
+			<td>
+				<select asp-for="DepartmentId" asp-items="ViewBag.Depts" class="form-control text-secondary">
+					<option value="-1" class="text-center">—Select—</option>
+				</select>
+			</td>
+		</tr> 
+	</table>
+	<div class="text-end">
+		<a asp-action="Index" asp-controller="Employees" class="btn btn-secondary btn-lg">Cancel</a>
+		<td>
+			<input type="submit" value="Save" class="btn btn-primary btn-lg" />
+		</td>
+	</div>
+</form>

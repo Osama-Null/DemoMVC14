@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employees</h1>
+
+@if (!Model.Any())
+{
+	<br>
+	<!-- If the model is empty, show a message -->
+	<div class="alert alert-warning">
+		<h4 class="alert-heading">Table is Empty</h4>
+		<p>No products found in the database.</p>
+		<p>You can add a new product @*or restore*@by clicking the button below:</p>
+		<!-- Add button -->
+		<a asp-action="Add" asp-controller="Employees" class="btn btn-success">+ Add Employee</a>
+		@* <a asp-action="SoftDeletedEmployees" asp-controller="Employees" class="btn btn-success">↻ Restore Product</a> *@
+	</div>
+}
+else
+{
+	<h1>Employees</h1>
+	<div class="text-end">
+		<a asp-action="Add" asp-controller="Employees" class="btn btn-success">+ Add Employee</a>
+	</div>
+
+	<table class="table table-responsive">
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.Email)</th>
+			<th>@Html.DisplayNameFor(model => model.Name)</th>
+		</tr>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Email</td>
+				<td class="text-end">
+					<a asp-action="Details" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-secondary">Details</a>
+					<a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-primary">Edit</a>
+					<a asp-action="Delete" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-danger">Delete</a>
+				</td>
+			</tr>
+		}
+	</table>
+}
